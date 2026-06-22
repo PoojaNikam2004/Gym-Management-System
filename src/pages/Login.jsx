@@ -8,6 +8,8 @@ import {Link} from "react-router-dom";
 function Login() {
     const [Showpassword,setShowpassword] = useState(false);
 
+    const [username ,setUsername] =useState("");
+    const [password, setPassword] = useState("");
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen px-10 bg-gray-100">
@@ -17,15 +19,18 @@ function Login() {
 
 
                     <h1 className="text-2xl font-bold text-gray-800">Login Form</h1>
-                    <input
-                        type="text"
-                        placeholder="Username"
+                    
+                    <input type="text" placeholder="Username"
                         className="border border-gray-300 rounded-md p-2 outline-none focus:ring-2 focus:ring-blue-500"
-                    />  
-                    <input type={Showpassword ? "text" : "password"} placeholder="Password" className="border border-gray-300 rounded-md p-2 outline-none focus:ring-2 focus:ring-blue-500" />
+                    value={username} onChange={(e) => setUsername(e.target.value)}/>  
+
+                    <input type={Showpassword ? "text" : "password"} placeholder="Password" className="border border-gray-300 rounded-md p-2 outline-none focus:ring-2 focus:ring-blue-500" 
+                    value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    
                     <button type="button" onClick={() => setShowpassword(!Showpassword)} className="bg-blue-300 text-white px-2 py-2 rounded-md hover:bg-blue-600 transition duration-300">
                         {Showpassword ? "Hide" : "Show"} Password
                     </button>
+                    
                     <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
                         Login
                     </button>
