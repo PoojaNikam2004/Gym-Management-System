@@ -13,8 +13,8 @@ function Sidebar() {
             <Link to="/trainers" className="hover:bg-gray-700 px-4 py-2 gap-2 transition duration-300 rounded">👨‍🏫 Trainers</Link>
             <Link to="/membership" className="hover:bg-gray-700 px-4 py-2 gap-2 transition duration-300 rounded">🎫 Membership</Link>
 
-            <Link to="/classes" className="hover:bg-gray-700 px-4 py-2 gap-2 transition duration-300 rounded">📚 Classes</Link>
-            <Link to="/schedules" className="hover:bg-gray-700 px-4 py-2 gap-2 transition duration-300 rounded">📅 Schedules</Link>
+      
+         
             <Link to="/attendance" className="hover:bg-gray-700 px-4 py-2 gap-2 transition duration-300 rounded">✅ Attendance</Link>
             <Link to="/payments" className="hover:bg-gray-700 px-4 py-2 gap-2 transition duration-300 rounded">💵 Payments</Link>
             <Link to="/profile" className="hover:bg-gray-700 px-4 py-2 gap-2 transition duration-300 rounded">👤 Profile</Link>

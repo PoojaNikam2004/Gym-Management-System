@@ -1,4 +1,4 @@
-function DashboardCard({ title, value, icon }) {
+function DashboardCard({ title, value, icon ,color }) {
     return (
         <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition duration-300">
 
@@ -14,9 +14,11 @@ function DashboardCard({ title, value, icon }) {
                     </p>
                 </div>
 
-                <div className="text-5xl">
+                <div className={` ${color} text-5xl`}>
                     {icon}
                 </div>
+                
+
 
             </div>
         </div>
