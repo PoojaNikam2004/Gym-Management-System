@@ -3,6 +3,8 @@ import DashboardCard from "../components/DashboardCard";
 import Header from "../components/Header";
 import RecentMembers from "../components/RecentMembers";
 import UpcomingClasses from "../components/UpcommingClasses";
+import AttendanceChart from "../components/AttendanceChart";
+
 
 function Dashboard(){
     return(
@@ -47,6 +49,7 @@ function Dashboard(){
 
     <div className="col-span-2">
         <RecentMembers />
+        <AttendanceChart />
     </div>
 
     <div>
@@ -55,12 +58,10 @@ function Dashboard(){
 
 </div>
 
-</div>
-
     </div>
-   
-    
-    )
+
+</div>
+    );
 
     
 }
