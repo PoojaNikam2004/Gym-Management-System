@@ -1,6 +1,9 @@
 import Sidebar from "../components/Sidebar";
 import DashboardCard from "../components/DashboardCard";
 import Header from "../components/Header";
+import RecentMembers from "../components/RecentMembers";
+import UpcomingClasses from "../components/UpcommingClasses";
+
 function Dashboard(){
     return(
         <div className="flex">
@@ -36,12 +39,29 @@ function Dashboard(){
                 icon="📅"
                 color="bg-green-500"
             />
-
+ 
         </div>
+        
 
+    <div className="grid grid-cols-3 gap-6 mt-8">
+
+    <div className="col-span-2">
+        <RecentMembers />
+    </div>
+
+    <div>
+        <UpcomingClasses />
     </div>
 
 </div>
+
+</div>
+
+    </div>
+   
+    
     )
+
+    
 }
 export default Dashboard;

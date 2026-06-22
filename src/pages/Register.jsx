@@ -18,7 +18,7 @@ function Register() {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen px-5 py-10 bg-gray-100">
             <form className="bg-gray-200 p-5 rounded shadow-md px-10 w-full max-w-md">
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4 ">
                     <h1 className="text-2xl font-bold text-gray-800">Register Form</h1>
                     <input type="text" placeholder="Username" className="border border-gray-300 rounded-md p-2" value={username} onChange={(e) => setUsername(e.target.value)} />
 
