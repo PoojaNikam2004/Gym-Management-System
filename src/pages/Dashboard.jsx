@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import RecentMembers from "../components/RecentMembers";
 import UpcomingClasses from "../components/UpcommingClasses";
 import AttendanceChart from "../components/AttendanceChart";
-
+import MembershipStats from "../components/MembershipStats";
 
 function Dashboard(){
     return(
@@ -45,22 +45,28 @@ function Dashboard(){
         </div>
         
 
-    <div className="grid grid-cols-3 gap-6 mt-8">
 
-    <div className="col-span-2">
-        <RecentMembers />
-        <AttendanceChart />
-    </div>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
 
-    <div>
-        <UpcomingClasses />
-    </div>
+    <AttendanceChart />
+
+    <MembershipStats />
+
+</div>
+
+<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+
+    <RecentMembers />
+
+    <UpcomingClasses />
+
+</div>
 
 </div>
 
     </div>
 
-</div>
+
     );
 
     
