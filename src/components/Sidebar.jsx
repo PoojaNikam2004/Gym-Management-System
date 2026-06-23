@@ -14,9 +14,9 @@ function Sidebar() {
             <Link to="/membership" className="hover:bg-gray-700 px-4 py-2 gap-2 transition duration-300 rounded">🎫 Membership</Link>
 
       
-         
+        
             <Link to="/attendance" className="hover:bg-gray-700 px-4 py-2 gap-2 transition duration-300 rounded">✅ Attendance</Link>
-            <Link to="/payments" className="hover:bg-gray-700 px-4 py-2 gap-2 transition duration-300 rounded">💵 Payments</Link>
+            <Link to="/recentpayment" className="hover:bg-gray-700 px-4 py-2 gap-2 transition duration-300 rounded">💵 RecentPayments</Link>
             <Link to="/profile" className="hover:bg-gray-700 px-4 py-2 gap-2 transition duration-300 rounded">👤 Profile</Link>
             <Link to="/settings" className="hover:bg-gray-700 px-4 py-2 gap-2 transition duration-300 rounded">⚙️ Settings</Link>
             <Link to="/logout" className="hover:bg-gray-700 mt-auto transition duration-300 rounded px-4 py-2">🚪 Logout</Link>

@@ -25,6 +25,11 @@ function Navbar() {
               Dashboard
             </Link>
           </li>
+          <li>
+            <Link to="/members" className="hover:text-blue-600">
+              Members
+            </Link>
+          </li>
 
           <li>
             <Link to="/membership" className="hover:text-blue-600">

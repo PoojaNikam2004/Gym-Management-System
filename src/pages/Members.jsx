@@ -1,8 +1,21 @@
-function Member(){
-    return(
-        <div>
-            <h1>Member Page</h1>
-        </div>
-    )
+import SearchBar from "../components/SearchBar";
+
+
+function Members() {
+
+  return (
+    <div className="p-8">
+
+     <SearchBar/>
+
+        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+          + Add Member
+        </button>
+
+      </div>
+
+   
+  );
 }
-export default Member;
+
+export default Members;

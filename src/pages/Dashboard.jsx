@@ -5,6 +5,9 @@ import RecentMembers from "../components/RecentMembers";
 import UpcomingClasses from "../components/UpcommingClasses";
 import AttendanceChart from "../components/AttendanceChart";
 import MembershipStats from "../components/MembershipStats";
+import RecentPayments from "../components/RecentPayment";
+import NotificationPanel from "../components/NotificationPanel";
+
 
 function Dashboard(){
     return(
@@ -61,6 +64,14 @@ function Dashboard(){
     <UpcomingClasses />
 
 </div>
+
+<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+
+    <RecentPayments/>
+
+    <NotificationPanel />
+</div>
+
 
 </div>
 

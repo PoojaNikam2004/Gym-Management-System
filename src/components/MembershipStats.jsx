@@ -34,12 +34,13 @@ function MembershipStats() {
 
                     <div
                         key={item.id}
-                        className="flex items-center gap-4"
-                    >
+                        className="flex items-center gap-4">
 
                         <div
                             className={`w-4 h-4 rounded-full ${item.color}`}
                         ></div>
+
+                        
 
                         <div className="flex-1">
 
@@ -48,6 +49,15 @@ function MembershipStats() {
                             </h3>
 
                         </div>
+
+                        <div className="w-full bg-gray-200 h-2 rounded-full">
+
+                         <div
+                              className={`${item.color} h-2 rounded-full`}
+                               style={{ width: `${item.members}%` }}
+                                      ></div>
+
+                                   </div>
 
                         <div className="font-bold text-lg">
                             {item.members}
