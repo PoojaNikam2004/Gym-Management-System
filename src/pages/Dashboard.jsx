@@ -9,6 +9,8 @@ import RecentPayments from "../components/RecentPayment";
 import NotificationPanel from "../components/NotificationPanel";
 
 
+
+
 function Dashboard(){
     return(
         <div className="flex">
@@ -71,6 +73,7 @@ function Dashboard(){
 
     <NotificationPanel />
 </div>
+
 
 
 </div>

@@ -1,9 +1,17 @@
-function Home(){
+import HeroSection from "../components/HeroSection";
+// import Features from "../components/Features";
+// import MembershipPlans from "../components/MembershipPlans";
+// import TrainersSection from "../components/TrainersSection";
+// import Testimonials from "../components/Testimonials";
+// import Footer from "../components/Footer";
+// 
+function Home() {
     return (
-        <div>
-            <h1>Welcome to the Home Page</h1>
-            <p>This is the main landing page of our application.</p>
-        </div>
+        <>
+            <HeroSection />
+             
+        </>
     );
 }
+
 export default Home;

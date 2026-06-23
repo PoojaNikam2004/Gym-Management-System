@@ -1,21 +1,26 @@
+import Sidebar from "../components/Sidebar";
+import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
-
+import MemberTable from "../components/MemberTable";
 
 function Members() {
+    return (
+        <div className="flex">
 
-  return (
-    <div className="p-8">
+            <Sidebar />
 
-     <SearchBar/>
+            <div className="flex-1 bg-gray-100 p-8">
 
-        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
-          + Add Member
-        </button>
+                <Header />
 
-      </div>
+                <SearchBar />
 
-   
-  );
+                <MemberTable />
+
+            </div>
+
+        </div>
+    );
 }
 
 export default Members;
