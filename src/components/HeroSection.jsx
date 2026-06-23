@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function HeroSection() {
     return (
-        <section className="bg-blue-50 from-blue-100 to-indigo-100 min-h-[90vh] flex items-center">
+        <section className="bg-linear-to-r from-blue-100 to-indigo-100 min-h-[90vh] flex items-center">
 
             <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-10">
 

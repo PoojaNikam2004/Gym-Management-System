@@ -7,6 +7,7 @@ function Testimonials() {
             name: "Pooja Nikam",
             review: "This gym completely changed my lifestyle. The trainers are amazing and very supportive.",
             rating: 5,
+            membersince: "Member since: 2020",
             image: "pooja.p.jpeg"
         },
 
@@ -15,6 +16,7 @@ function Testimonials() {
             name: "Rahul Sharma",
             review: "The equipment is modern and the atmosphere is motivating. Highly recommended!",
             rating: 5,
+            membersince: "Member since: 2022",
             image: "pooja.p.jpeg"
         },
 
@@ -23,6 +25,7 @@ function Testimonials() {
             name: "Sneha Patil",
             review: "Affordable membership plans with excellent facilities. I enjoy working out here every day.",
             rating: 4,
+            membersince: "Member since: 2021",
             image: "pooja.p.jpeg"
         }
 
@@ -77,8 +80,12 @@ function Testimonials() {
                                 "{member.review}"
                             </p>
 
+                            <p className="mt-4 text-gray-400 text-sm">
+                                {member.membersince}
+                            </p>
                         </div>
-
+            
+                        
                     ))}
 
                 </div>

@@ -4,7 +4,7 @@ function Header() {
 
     return (
 
-        <div className="flex justify-between items-center mb-8">
+        <div className=" flex justify-between items-center mb-8">
 
             <div>
 
