@@ -75,6 +75,12 @@ function MembershipPlans() {
                                 {plan.name}
                             </h3>
 
+                            {plan.name === "Premium" && (
+                                <span className="bg-yellow-400 text-black px-3 py-1 rounded-full text-sm">
+                                    ⭐ Most Popular
+                                </span>
+                            )}
+
                             <p className="text-4xl font-bold text-blue-600">
                                 {plan.price}
                                 <span className="text-lg text-gray-500">
