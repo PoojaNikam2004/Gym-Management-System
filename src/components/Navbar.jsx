@@ -15,7 +15,7 @@ function Navbar() {
         <ul className="flex items-center gap-6 text-gray-700 font-medium">
 
           <li>
-            <Link to="/home" className="hover:text-blue-600">
+            <Link to="/" className="hover:text-blue-600">
               Home
             </Link>
           </li>
