@@ -4,7 +4,7 @@ import { useState } from "react";
 
 
 
-function AddMemberModal({ onClose }) {
+function AddMemberModal({ onClose ,addMember }) {
 
     
     const [name, setName] = useState("");
@@ -12,16 +12,26 @@ function AddMemberModal({ onClose }) {
     const [mobile, setMobileNumber] = useState("");
     const [age, setAge] = useState("");
     const [gender, setGender] = useState("");
+    const [membership, setMembership] = useState("");
 
     
-  
-    const[membership ,setMembership] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-    const handleSubmit =(e)=>{
-        e.preventDefault();
-        console.log({gender, name, email, mobile, age, membership});
-
+    const newMember = {
+        id: Date.now(),
+        name,
+        email,
+        mobile,
+        age,
+        gender,
+        membership,
     };
+
+    addMember(newMember);
+    onClose();
+};
+    
 
 
     return (
@@ -70,7 +80,7 @@ function AddMemberModal({ onClose }) {
                             <option value="vip">VIP</option>
                         </select>
                         <div className="flex justify-end gap-3 mt-6">
-                            <button type="submit"
+                            <button type="submit"  onClick={addMember}
                                 className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4 hover:bg-blue-600 transition">Save</button>
                                 
                             <button type="button" onClick={onClose}

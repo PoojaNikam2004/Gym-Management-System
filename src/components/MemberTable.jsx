@@ -1,5 +1,35 @@
 function MemberTable( {members}) {
 
+     //const members = [
+     //    {
+     //        id: 1,
+     //        name: "Pooja Nikam",
+     //        age: 21,
+     //        gender: "Female",
+     //        plan: "Yearly",
+     //        trainer: "Rahul",
+     //        status: "Active"
+     //    },
+     //    {
+     //        id: 2,
+     //        name: "Ramkrushn ...",
+     //        age: 24,
+     //        gender: "Male",
+     //        plan: "Monthly",
+     //        trainer: "Karan",
+     //        status: "Expired"
+     //    },
+     //    {
+     //        id: 3,
+     //        name: "Sneha Patil",
+     //        age: 22,
+     //        gender: "Female",
+     //        plan: "Quarterly",
+     //        trainer: "Mohan",
+     //        status: "Active"
+     //    }
+     //];
+
     return (
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
 
@@ -76,4 +106,3 @@ function MemberTable( {members}) {
 }
 
 export default MemberTable;
-            

@@ -7,6 +7,17 @@ import AddMemberModal from "../components/AddMemberModal";
 
 function Members() {
 
+const [members, setMembers] = useState([
+  {
+    id: 1,
+    name: "Pooja Nikam",
+    email: "pooja@gmail.com",
+    mobile: "9876543210",
+    age: 21,
+    gender: "Female",
+    membership: "Premium",
+  },
+]);
     const [showModal, setShowModal] = useState(false);
 
     return (
@@ -19,10 +30,10 @@ function Members() {
                 <Header />
 
                 <SearchBar onAddMember={() => setShowModal(true)} />
-                    <MemberTable />
+                    <MemberTable  members={members} onChange={setMembers}/>
 
               {showModal && (
-                   <AddMemberModal onClose={() => setShowModal(false)} />
+               <AddMemberModal onClose={() => setShowModal(false)} addMember={Members}/>
 )}
 
             </div>
