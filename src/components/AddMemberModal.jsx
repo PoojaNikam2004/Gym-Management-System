@@ -26,6 +26,9 @@ function AddMemberModal({ onClose ,addMember }) {
         age,
         gender,
         membership,
+        trainer: "pooja",
+        plan: "yearly",
+        status: "Active",
     };
 
     addMember(newMember);

@@ -16,6 +16,8 @@ function Members() {
             age: 21,
             gender: "Female",
             membership: "Premium",
+            trainer: "pooja",
+            plan:"yearly"
         },
     ]);
     const [showModal, setShowModal] = useState(false);
