@@ -7,18 +7,23 @@ import AddMemberModal from "../components/AddMemberModal";
 
 function Members() {
 
-const [members, setMembers] = useState([
-  {
-    id: 1,
-    name: "Pooja Nikam",
-    email: "pooja@gmail.com",
-    mobile: "9876543210",
-    age: 21,
-    gender: "Female",
-    membership: "Premium",
-  },
-]);
+    const [members, setMembers] = useState([
+        {
+            id: 1,
+            name: "Pooja Nikam",
+            email: "pooja@gmail.com",
+            mobile: "9876543210",
+            age: 21,
+            gender: "Female",
+            membership: "Premium",
+        },
+    ]);
     const [showModal, setShowModal] = useState(false);
+
+
+    const addMember = (newMember) => {
+        setMembers((prevMembers) => [...prevMembers, newMember]);
+    };
 
     return (
         <div className="flex">
@@ -30,11 +35,14 @@ const [members, setMembers] = useState([
                 <Header />
 
                 <SearchBar onAddMember={() => setShowModal(true)} />
-                    <MemberTable  members={members} onChange={setMembers}/>
+                <MemberTable members={members}  />
 
-              {showModal && (
-               <AddMemberModal onClose={() => setShowModal(false)} addMember={Members}/>
-)}
+                {showModal && (
+                    <AddMemberModal
+                        onClose={() => setShowModal(false)}
+                        addMember={addMember}
+                    />
+                )}
 
             </div>
 
