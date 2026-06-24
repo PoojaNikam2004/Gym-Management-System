@@ -1,9 +1,14 @@
+import { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import MemberTable from "../components/MemberTable";
+import AddMemberModal from "../components/AddMemberModal";
 
 function Members() {
+
+    const [showModal, setShowModal] = useState(false);
+
     return (
         <div className="flex">
 
@@ -13,9 +18,12 @@ function Members() {
 
                 <Header />
 
-                <SearchBar />
+                <SearchBar onAddMember={() => setShowModal(true)} />
+                    <MemberTable />
 
-                <MemberTable />
+              {showModal && (
+                   <AddMemberModal onClose={() => setShowModal(false)} />
+)}
 
             </div>
 
