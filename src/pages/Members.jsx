@@ -27,6 +27,21 @@ function Members() {
         setMembers((prevMembers) => [...prevMembers, newMember]);
     };
 
+    const deleteMember = (id) => {
+    setMembers((prevMembers) =>
+        prevMembers.filter((member) => member.id !== id)
+    );
+};
+const editMember =(id)=> {
+    setMembers((prevMembers) =>
+    prevMembers.map((member) =>
+        member.id === id ? { ...member, name: "Updated Name" } : member
+    )
+);
+}
+
+
+
     return (
         <div className="flex">
 
@@ -37,7 +52,7 @@ function Members() {
                 <Header />
 
                 <SearchBar onAddMember={() => setShowModal(true)} />
-                <MemberTable members={members}  />
+                <MemberTable members={members} deleteMember={deleteMember} editMember={editMember} />
 
                 {showModal && (
                     <AddMemberModal
@@ -45,6 +60,8 @@ function Members() {
                         addMember={addMember}
                     />
                 )}
+
+              
 
             </div>
 

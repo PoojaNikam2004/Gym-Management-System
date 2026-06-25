@@ -1,4 +1,4 @@
-function MemberTable( {members}) {
+function MemberTable( {members ,deleteMember , editMember}) {
 
      //const members = [
      //    {
@@ -30,7 +30,6 @@ function MemberTable( {members}) {
      //    }
      //];
 
-     
 
     return (
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
@@ -85,11 +84,13 @@ function MemberTable( {members}) {
 
                             <td className="p-4 text-center">
 
-                                <button className="bg-blue-500 text-white px-3 py-1 rounded mr-2">
+                                <button className="bg-blue-500 text-white px-3 py-1 rounded mr-2"
+                                onClick={()=>{editMember(member.id)}}>
                                     Edit
                                 </button>
 
-                                <button className="bg-red-500 text-white px-3 py-1 rounded">
+                                <button className="bg-red-500 text-white px-3 py-1 rounded"
+                                 onClick={()=>{deleteMember(member.id)}} >
                                     Delete
                                 </button>
 
