@@ -1,102 +1,197 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
+function AddMemberModal({
+  onClose,
+  addMember,
+  editingMember,
+  updateMember,
+}) {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    mobile: "",
+    age: "",
+    gender: "",
+    membership: "",
+  });
 
+  useEffect(() => {
+    if (editingMember) {
+      setFormData({
+        name: editingMember.name || "",
+        email: editingMember.email || "",
+        mobile: editingMember.mobile || "",
+        age: editingMember.age || "",
+        gender: editingMember.gender || "",
+        membership: editingMember.membership || "",
+      });
+    } else {
+      setFormData({
+        name: "",
+        email: "",
+        mobile: "",
+        age: "",
+        gender: "",
+        membership: "",
+      });
+    }
+  }, [editingMember]);
 
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
-
-function AddMemberModal({ onClose ,addMember }) {
-
-    
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [mobile, setMobileNumber] = useState("");
-    const [age, setAge] = useState("");
-    const [gender, setGender] = useState("");
-    const [membership, setMembership] = useState("");
-
-    
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newMember = {
-        id: Date.now(),
-        name,
-        email,
-        mobile,
-        age,
-        gender,
-        membership,
-        trainer: "pooja",
-        plan: "yearly",
-        status: "Active",
+    const memberData = {
+      id: editingMember ? editingMember.id : Date.now(),
+      ...formData,
+      trainer: "Pooja",
+      plan: formData.membership,
+      status: "Active",
     };
 
-    addMember(newMember);
+    if (editingMember) {
+      updateMember(memberData);
+    } else {
+      addMember(memberData);
+    }
+
     onClose();
-};
-    
+  };
 
+  return (
+    <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+      <div className="bg-white w-full max-w-lg rounded-xl shadow-xl p-6">
 
-    return (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-            <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
+        <h2 className="text-2xl font-bold mb-2">
+          {editingMember ? "Edit Member" : "Add New Member"}
+        </h2>
 
-                <h1 className="text-xl font-bold mb-4">Add New Member</h1>
-                <p className="text-gray-500 mb-6">
-                    Fill member information below.
-                </p>
+        <p className="text-gray-500 mb-6">
+          Fill all required member details.
+        </p>
 
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
 
-                        <label className="block text-gray-700 mb-2" htmlFor="name">Name</label>
-                        <input className="border p-2 rounded-lg w-full mb-4" type="text" id="name" name="name" placeholder="Enter name"
-                            value={name} onChange={(e) => setName(e.target.value)} />
+          <div>
+            <label className="font-medium">Name</label>
 
-                        <label className="block text-gray-700 mb-2" htmlFor="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Enter email" className="border p-2 rounded-lg w-full mb-4"
-                            value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input
+              type="text"
+              name="name"
+              placeholder="Enter Name"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full border rounded-lg p-2 mt-1"
+              required
+            />
+          </div>
 
-                        <label className="block text-gray-700 mb-2" htmlFor="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone" placeholder="Enter mobile number" className="border p-2 rounded-lg w-full mb-4"
-                            value={mobile} onChange={(e) => setMobileNumber(e.target.value)} />
+          <div>
+            <label className="font-medium">Email</label>
 
-                        <label className="block text-gray-700 mb-2" htmlFor="age">Age</label>
-                        <input type="number" id="age" name="age" placeholder="Enter age" className="border p-2 rounded-lg w-full mb-4"
-                            value={age} onChange={(e) => setAge(e.target.value)} />
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter Email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full border rounded-lg p-2 mt-1"
+              required
+            />
+          </div>
 
-                        <label className="block text-gray-700 mb-2" htmlFor="gender">Gender</label>
+          <div>
+            <label className="font-medium">Mobile</label>
 
-                        <select id="gender" name="gender" value={gender} onChange={(e) => setGender(e.target.value)} className="border p-2 rounded-lg w-full mb-4">
-                            <option value="">Select Gender</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
-                        </select>
+            <input
+              type="text"
+              name="mobile"
+              placeholder="Enter Mobile Number"
+              value={formData.mobile}
+              onChange={handleChange}
+              className="w-full border rounded-lg p-2 mt-1"
+              required
+            />
+          </div>
 
+          <div>
+            <label className="font-medium">Age</label>
 
-                        <label className="block text-gray-700 mb-2" htmlFor="membership">Membership</label>
-                        <select id="membership" name="membership" className="border p-2 rounded-lg w-full mb-4" value={membership} onChange={(e) => setMembership(e.target.value)}>
-                            <option value="">Select Membership</option>
-                            <option value="basic">Basic</option>
-                            <option value="premium">Premium</option>
-                            <option value="vip">VIP</option>
-                        </select>
-                        <div className="flex justify-end gap-3 mt-6">
-                            <button type="submit"  
-                                className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4 hover:bg-blue-600 transition">Save</button>
-                                
-                            <button type="button" onClick={onClose}
-                                className="bg-gray-500 text-white px-4 py-2 rounded-lg mt-4 hover:bg-gray-600 transition ml-2">Cancel</button>
+            <input
+              type="number"
+              name="age"
+              placeholder="Enter Age"
+              value={formData.age}
+              onChange={handleChange}
+              className="w-full border rounded-lg p-2 mt-1"
+              required
+            />
+          </div>
 
-                        </div>
-                    </div>
-                </form>
+          <div>
+            <label className="font-medium">Gender</label>
 
-            </div>
+            <select
+              name="gender"
+              value={formData.gender}
+              onChange={handleChange}
+              className="w-full border rounded-lg p-2 mt-1"
+              required
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
 
-        </div>
+          <div>
+            <label className="font-medium">Membership</label>
 
-    )
+            <select
+              name="membership"
+              value={formData.membership}
+              onChange={handleChange}
+              className="w-full border rounded-lg p-2 mt-1"
+              required
+            >
+              <option value="">Select Membership</option>
+              <option value="Basic">Basic</option>
+              <option value="Premium">Premium</option>
+              <option value="VIP">VIP</option>
+            </select>
+          </div>
+
+          <div className="flex justify-end gap-3 pt-4">
+
+            <button
+              type="button"
+              onClick={onClose}
+              className="px-5 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg"
+            >
+              Cancel
+            </button>
+
+            <button
+              type="submit"
+              className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg"
+            >
+              {editingMember ? "Update Member" : "Save Member"}
+            </button>
+
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  );
 }
+
 export default AddMemberModal;
