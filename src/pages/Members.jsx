@@ -5,7 +5,7 @@ import SearchBar from "../components/SearchBar";
 import MemberTable from "../components/MemberTable";
 import AddMemberModal from "../components/AddMemberModal";
 
-function Members() {
+function Members() { 
   const [members, setMembers] = useState([
     {
       id: 1,
@@ -15,11 +15,12 @@ function Members() {
       age: 21,
       gender: "Female",
       membership: "Premium",
-      trainer: "Pooja",
+      trainer: "Pooja",  
       plan: "Yearly",
-      status: "Active",
+      status: "Active", 
     },
   ]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const [showModal, setShowModal] = useState(false);
 
@@ -60,7 +61,9 @@ function Members() {
       <div className="flex-1 bg-gray-100 p-8">
         <Header />
 
-        <SearchBar
+        <SearchBar 
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
           onAddMember={() => {
             setEditingMember(null);
             setShowModal(true);
@@ -71,6 +74,7 @@ function Members() {
           members={members}
           deleteMember={deleteMember}
           editMember={editMember}
+          searchTerm={searchTerm}
         />
 
         {showModal && (
