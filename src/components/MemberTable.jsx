@@ -1,4 +1,8 @@
-function MemberTable({ members, deleteMember, editMember }) {
+function MemberTable({ members, deleteMember, editMember ,searchTerm  }) {
+
+  const filteredMembers = members.filter((member) =>
+  member.name.toLowerCase().includes(searchTerm.toLowerCase())
+);
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden mt-6">
       <table className="w-full">
@@ -15,7 +19,7 @@ function MemberTable({ members, deleteMember, editMember }) {
         </thead>
 
         <tbody>
-          {members.length === 0 ? (
+          {filteredMembers.length === 0 ? (
             <tr>
               <td
                 colSpan="7"
@@ -25,7 +29,7 @@ function MemberTable({ members, deleteMember, editMember }) {
               </td>
             </tr>
           ) : (
-            members.map((member) => (
+            filteredMembers.map((member) => (
               <tr
                 key={member.id}
                 className="border-b hover:bg-gray-50"

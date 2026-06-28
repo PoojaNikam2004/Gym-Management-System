@@ -1,4 +1,4 @@
-function SearchBar({ onAddMember }) {
+function SearchBar({ onAddMember ,searchTerm ,setSearchTerm}) {
   return (
     <div className="p-6 bg-white rounded-lg shadow-md">
       <h1 className="text-3xl font-bold mb-6">
@@ -9,7 +9,7 @@ function SearchBar({ onAddMember }) {
         <input
           type="text"
           placeholder="Search Member..."
-          className="border p-2 rounded-lg w-80"
+          className="border p-2 rounded-lg w-80" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}
         />
 
         <button className="bg-blue-500 text-white px-4 py-2 rounded-lg" onClick={onAddMember}>
