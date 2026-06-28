@@ -3,6 +3,8 @@ function MemberTable({ members, deleteMember, editMember ,searchTerm  }) {
   const filteredMembers = members.filter((member) =>
   member.name.toLowerCase().includes(searchTerm.toLowerCase())
 );
+
+
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden mt-6">
       <table className="w-full">
