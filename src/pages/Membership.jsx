@@ -1,7 +1,39 @@
 import SideBar from "../components/SideBar";
 import Header from "../components/Header";
+import MembershipSearchBar from "../components/MembershipSearchBar";
+import MembershipTable from "../components/MembershipTable";
+import {useState} from "react";
 
 function Membership(){
+
+ const [searchTerm ,setSearchTerm ]=useState("");
+
+const [plans, setPlans] = useState([
+  {
+    id: 1,
+    name: "Basic",
+    duration: "1 Month",
+    price: 999,
+    status: "Active",
+  },
+  {
+    id: 2,
+    name: "Premium",
+    duration: "6 Months",
+    price: 4999,
+    status: "Active",
+  },
+  {
+    id: 3,
+    name: "VIP",
+    duration: "12 Months",
+    price: 8999,
+    status: "Inactive",
+  },
+]);
+
+
+
     return(
         <div className="flex">
 
@@ -12,6 +44,18 @@ function Membership(){
                  <Header/>
             <h2 className="text-xl font-bold mb-4">Membership Details</h2>
             <p>This is the membership page content.</p>
+
+            <div >
+                   <MembershipSearchBar 
+                   searchTerm={searchTerm}
+                   setSearchTerm={setSearchTerm}
+                  // onAddPlan={() => setShowModal(true)}
+                   />
+              <MembershipTable plans={plans} setPlans={setPlans}/>
+
+
+            </div>
+
         </div>
         </div>
     )
