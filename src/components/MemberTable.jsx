@@ -1,8 +1,16 @@
-function MemberTable({ members, deleteMember, editMember ,searchTerm  }) {
+function MemberTable({ members, deleteMember, editMember ,searchTerm ,membershipFilter}) {
 
-  const filteredMembers = members.filter((member) =>
-  member.name.toLowerCase().includes(searchTerm.toLowerCase())
-);
+  
+const filteredMembers = members.filter((member) => {
+  const matchesSearch =
+    member.name.toLowerCase().includes(searchTerm.toLowerCase());
+
+  const matchesMembership =
+    membershipFilter === "All" ||
+    member.membership === membershipFilter;
+
+  return matchesSearch && matchesMembership;
+});
 
 
   return (

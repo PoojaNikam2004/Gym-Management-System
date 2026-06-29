@@ -22,6 +22,8 @@ function Members() {
   ]);
   const [searchTerm, setSearchTerm] = useState("");
 
+  const [membershipFilter, setMembershipFilter] = useState("All");
+
   const [showModal, setShowModal] = useState(false);
 
   const [editingMember, setEditingMember] = useState(null);
@@ -64,6 +66,8 @@ function Members() {
         <SearchBar 
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
+        membershipFilter={membershipFilter}
+        setMembershipFilter={setMembershipFilter}
           onAddMember={() => {
             setEditingMember(null);
             setShowModal(true);
@@ -75,6 +79,7 @@ function Members() {
           deleteMember={deleteMember}
           editMember={editMember}
           searchTerm={searchTerm}
+          membershipFilter={membershipFilter}
         />
 
         {showModal && (
