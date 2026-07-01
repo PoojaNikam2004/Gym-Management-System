@@ -1,15 +1,15 @@
-function TrainerTable({ trainers, deleteTrainer, editTrainer ,searchTerm ,membershipFilter}) {
+function TrainerTable({ trainers, deleteTrainer, editTrainer ,searchTerm ,trainerFilter}) {
 
   
 const filteredTrainers = trainers.filter((trainer) => {
   const matchesSearch =
     trainer.name.toLowerCase().includes(searchTerm.toLowerCase());
 
-  const matchesMembership =
-    membershipFilter === "All" ||
-    trainer.membership === membershipFilter;
+  const matchesTrainer =
+    trainerFilter === "All" ||
+    trainer.status === trainerFilter;
 
-  return matchesSearch && matchesMembership;
+  return matchesSearch && matchesTrainer;
 });
 
 
