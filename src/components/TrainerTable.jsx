@@ -1,17 +1,23 @@
-function TrainerTable({ trainers, deleteTrainer, editTrainer ,searchTerm ,trainerFilter}) {
+function TrainerTable({
+  trainers,
+  deleteTrainer,
+  editTrainer,
+  searchTerm,
+  trainerFilter,
+}) {
+  const filteredTrainers = trainers.filter((trainer) => {
+    const matchesSearch =
+      trainer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      trainer.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      trainer.specialization
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
 
-  
-const filteredTrainers = trainers.filter((trainer) => {
-  const matchesSearch =
-    trainer.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesFilter =
+      trainerFilter === "All" || trainer.status === trainerFilter;
 
-  const matchesTrainer =
-    trainerFilter === "All" ||
-    trainer.status === trainerFilter;
-
-  return matchesSearch && matchesTrainer;
-});
-
+    return matchesSearch && matchesFilter;
+  });
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden mt-6">
@@ -23,22 +29,14 @@ const filteredTrainers = trainers.filter((trainer) => {
             <th className="p-4 text-left">Phone</th>
             <th className="p-4 text-left">Specialization</th>
             <th className="p-4 text-left">Experience</th>
+            <th className="p-4 text-left">Membership</th>
             <th className="p-4 text-left">Status</th>
-        
+            <th className="p-4 text-center">Action</th>
           </tr>
         </thead>
 
         <tbody>
-          {filteredTrainers.length === 0 ? (
-            <tr>
-              <td
-                colSpan="7"
-                className="text-center py-6 text-gray-500"
-              >
-                No Trainers Found
-              </td>
-            </tr>
-          ) : (
+          {filteredTrainers.length > 0 ? (
             filteredTrainers.map((trainer) => (
               <tr
                 key={trainer.id}
@@ -54,6 +52,8 @@ const filteredTrainers = trainers.filter((trainer) => {
 
                 <td className="p-4">{trainer.experience}</td>
 
+                <td className="p-4">{trainer.membership}</td>
+
                 <td className="p-4">
                   <span
                     className={`px-3 py-1 rounded-full text-white text-sm ${
@@ -66,10 +66,10 @@ const filteredTrainers = trainers.filter((trainer) => {
                   </span>
                 </td>
 
-                <td className="p-4 text-center space-x-2">
+                <td className="p-4 text-center">
                   <button
                     onClick={() => editTrainer(trainer)}
-                    className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded"
+                    className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded mr-2"
                   >
                     Edit
                   </button>
@@ -83,6 +83,15 @@ const filteredTrainers = trainers.filter((trainer) => {
                 </td>
               </tr>
             ))
+          ) : (
+            <tr>
+              <td
+                colSpan="8"
+                className="text-center py-6 text-gray-500"
+              >
+                No Trainers Found
+              </td>
+            </tr>
           )}
         </tbody>
       </table>

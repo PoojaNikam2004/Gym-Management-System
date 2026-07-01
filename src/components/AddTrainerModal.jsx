@@ -11,8 +11,9 @@ function AddTrainerModal({
     email: "",
     phone: "",
     specialization: "",
-     experience: "",
-    status:""
+    experience: "",
+    membership: "",
+    status: "Active",
   });
 
   useEffect(() => {
@@ -23,7 +24,8 @@ function AddTrainerModal({
         phone: editingTrainer.phone || "",
         specialization: editingTrainer.specialization || "",
         experience: editingTrainer.experience || "",
-        status: editingTrainer.status || "",
+        membership: editingTrainer.membership || "",
+        status: editingTrainer.status || "Active",
       });
     } else {
       setFormData({
@@ -32,15 +34,18 @@ function AddTrainerModal({
         phone: "",
         specialization: "",
         experience: "",
-        status: "",
+        membership: "",
+        status: "Active",
       });
     }
   }, [editingTrainer]);
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
+
     setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }));
   };
 
@@ -50,9 +55,6 @@ function AddTrainerModal({
     const trainerData = {
       id: editingTrainer ? editingTrainer.id : Date.now(),
       ...formData,
-      trainer: "Pooja",
-      plan: formData.membership,
-      status: "Active",
     };
 
     if (editingTrainer) {
@@ -65,7 +67,8 @@ function AddTrainerModal({
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+    <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
+
       <div className="bg-white w-full max-w-lg rounded-xl shadow-xl p-6">
 
         <h2 className="text-2xl font-bold mb-2">
@@ -73,105 +76,101 @@ function AddTrainerModal({
         </h2>
 
         <p className="text-gray-500 mb-6">
-          Fill all required trainer details.
+          Fill trainer details below.
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
 
           <div>
-            <label className="font-medium">Name</label>
+            <label className="block mb-1 font-medium">
+              Name
+            </label>
 
             <input
               type="text"
               name="name"
-              placeholder="Enter Name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full border rounded-lg p-2 mt-1"
+              placeholder="Enter Trainer Name"
+              className="w-full border rounded-lg p-2"
               required
             />
           </div>
 
           <div>
-            <label className="font-medium">Email</label>
+            <label className="block mb-1 font-medium">
+              Email
+            </label>
 
             <input
               type="email"
               name="email"
-              placeholder="Enter Email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full border rounded-lg p-2 mt-1"
+              placeholder="Enter Email"
+              className="w-full border rounded-lg p-2"
               required
             />
           </div>
 
           <div>
-            <label className="font-medium">Phone</label>
+            <label className="block mb-1 font-medium">
+              Phone
+            </label>
 
             <input
               type="text"
               name="phone"
-              placeholder="Enter Phone Number"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full border rounded-lg p-2 mt-1"
+              placeholder="Enter Phone Number"
+              className="w-full border rounded-lg p-2"
               required
             />
           </div>
 
           <div>
-            <label className="font-medium">Specialization</label>
+            <label className="block mb-1 font-medium">
+              Specialization
+            </label>
 
             <input
               type="text"
               name="specialization"
-              placeholder="Enter Specialization"
               value={formData.specialization}
               onChange={handleChange}
-              className="w-full border rounded-lg p-2 mt-1"
+              placeholder="Yoga / Cardio / Strength"
+              className="w-full border rounded-lg p-2"
               required
             />
           </div>
 
           <div>
-            <label className="font-medium">Experience</label>
+            <label className="block mb-1 font-medium">
+              Experience
+            </label>
 
             <input
               type="text"
               name="experience"
-              placeholder="Enter Experience"
               value={formData.experience}
               onChange={handleChange}
-              className="w-full border rounded-lg p-2 mt-1"
+              placeholder="5 Years"
+              className="w-full border rounded-lg p-2"
               required
             />
           </div>
 
           <div>
-            <label className="font-medium">Status</label>
-
-            <select
-              name="status"
-              value={formData.status}
-              onChange={handleChange}
-              className="w-full border rounded-lg p-2 mt-1"
-              required
-            >
-              <option value="">Select Status</option>
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
-            </select>
-          </div>
-
-          <div>
-            <label className="font-medium">Membership</label>
+            <label className="block mb-1 font-medium">
+              Membership
+            </label>
 
             <select
               name="membership"
               value={formData.membership}
               onChange={handleChange}
-              className="w-full border rounded-lg p-2 mt-1"
+              className="w-full border rounded-lg p-2"
               required
             >
               <option value="">Select Membership</option>
@@ -181,19 +180,35 @@ function AddTrainerModal({
             </select>
           </div>
 
+          <div>
+            <label className="block mb-1 font-medium">
+              Status
+            </label>
+
+            <select
+              name="status"
+              value={formData.status}
+              onChange={handleChange}
+              className="w-full border rounded-lg p-2"
+            >
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+          </div>
+
           <div className="flex justify-end gap-3 pt-4">
 
             <button
               type="button"
               onClick={onClose}
-              className="px-5 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg"
+              className="bg-gray-500 hover:bg-gray-600 text-white px-5 py-2 rounded-lg"
             >
               Cancel
             </button>
 
             <button
               type="submit"
-              className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg"
             >
               {editingTrainer ? "Update Trainer" : "Save Trainer"}
             </button>
@@ -203,6 +218,7 @@ function AddTrainerModal({
         </form>
 
       </div>
+
     </div>
   );
 }
