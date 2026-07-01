@@ -8,7 +8,6 @@ function AddMembershipModal({ onClose, addPlan }) {
     status: "Active",
   });
 
-  // Handle all input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -18,7 +17,6 @@ function AddMembershipModal({ onClose, addPlan }) {
     }));
   };
 
-  // Handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -32,24 +30,14 @@ function AddMembershipModal({ onClose, addPlan }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-
-      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-
-        <h2 className="text-2xl font-bold mb-2">
+    <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
+      <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
+        <h2 className="text-2xl font-bold mb-6">
           Add Membership Plan
         </h2>
 
-        <p className="text-gray-500 mb-6">
-          Fill membership details below.
-        </p>
-
         <form onSubmit={handleSubmit}>
-
-          {/* Plan Name */}
-
           <div className="mb-4">
-
             <label className="block mb-2 font-medium">
               Plan Name
             </label>
@@ -57,27 +45,25 @@ function AddMembershipModal({ onClose, addPlan }) {
             <input
               type="text"
               name="name"
-              placeholder="Enter Plan Name"
-              className="border rounded-lg p-2 w-full"
               value={formData.name}
               onChange={handleChange}
+              placeholder="Enter Plan Name"
+              className="w-full border rounded-lg p-2"
+              required
             />
-
           </div>
 
-          {/* Duration */}
-
           <div className="mb-4">
-
             <label className="block mb-2 font-medium">
               Duration
             </label>
 
             <select
               name="duration"
-              className="border rounded-lg p-2 w-full"
               value={formData.duration}
               onChange={handleChange}
+              className="w-full border rounded-lg p-2"
+              required
             >
               <option value="">Select Duration</option>
               <option value="1 Month">1 Month</option>
@@ -85,53 +71,41 @@ function AddMembershipModal({ onClose, addPlan }) {
               <option value="6 Months">6 Months</option>
               <option value="12 Months">12 Months</option>
             </select>
-
           </div>
 
-          {/* Price */}
-
           <div className="mb-4">
-
             <label className="block mb-2 font-medium">
               Price
             </label>
 
             <input
               type="number"
-              min="0"
               name="price"
-              placeholder="Enter Price"
-              className="border rounded-lg p-2 w-full"
               value={formData.price}
               onChange={handleChange}
+              placeholder="Enter Price"
+              className="w-full border rounded-lg p-2"
+              required
             />
-
           </div>
 
-          {/* Status */}
-
           <div className="mb-6">
-
             <label className="block mb-2 font-medium">
               Status
             </label>
 
             <select
               name="status"
-              className="border rounded-lg p-2 w-full"
               value={formData.status}
               onChange={handleChange}
+              className="w-full border rounded-lg p-2"
             >
               <option value="Active">Active</option>
               <option value="Inactive">Inactive</option>
             </select>
-
           </div>
 
-          {/* Buttons */}
-
           <div className="flex justify-end gap-3">
-
             <button
               type="button"
               onClick={onClose}
@@ -146,13 +120,9 @@ function AddMembershipModal({ onClose, addPlan }) {
             >
               Save Plan
             </button>
-
           </div>
-
         </form>
-
       </div>
-
     </div>
   );
 }
