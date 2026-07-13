@@ -3,6 +3,7 @@ import cors from "cors";
 
 import "./Config/db.js";
 
+import member from "./Routes/member.js";
 import membership from "./Routes/membership.js";
 import attendance from "./Routes/attendance.js";
 import profile from "./Routes/profile.js";
@@ -17,6 +18,7 @@ app.get("/", (req, res) => {
   res.send("Gym Management System Backend is Running");
 });
 
+app.use("/api/member",member);
 app.use("/api/membership", membership);
 app.use("/api/attendance", attendance);
 app.use("/api/profile", profile);
