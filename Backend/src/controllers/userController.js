@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 
 import jwt from "jsonwebtoken";
 
-// ================= REGISTER =================
+
 
 export const register = (req, res) => {
   const { username, email, password } = req.body;
@@ -59,7 +59,7 @@ export const register = (req, res) => {
   });
 };
 
-// ================= LOGIN =================
+
 
 export const login = (req, res) => {
   const { email, password } = req.body;

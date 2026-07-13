@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/user", user);
-app.use("/api/member",member);
+app.use("/api/members",member);
 app.use("/api/membership", membership);
 app.use("/api/attendance", attendance);
 app.use("/api/profile", profile);
